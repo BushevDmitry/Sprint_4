@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class AboutRent {
 
     private final WebDriver webDriver;
@@ -22,6 +23,8 @@ public class AboutRent {
 
     // Локатор кнопки "Да" во всплывающем окне подтверждения заказа
     private final By confirmationLocator = By.xpath("//button[text()='Да']");
+
+    private final By orderCompleteLocator = By.xpath("//div[text()='Заказ оформлен']");
 
     public AboutRent(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -57,4 +60,13 @@ public class AboutRent {
     public void buttonSelectConfirmation(){
         webDriver.findElement(confirmationLocator).click();
     }
+
+    //Проверка появления всплывающего окна с подтвержденным заказом
+    public boolean orderCompleteIsDisplayed(){
+        return webDriver.findElement(orderCompleteLocator).isDisplayed();
+    }
+
+
 }
+
+

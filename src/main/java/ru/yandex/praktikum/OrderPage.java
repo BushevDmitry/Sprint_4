@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+
+
 public class OrderPage {
     private final WebDriver webDriver;
 
@@ -21,8 +23,9 @@ public class OrderPage {
     //Локатор кнопки "Далее"
     private final By nextButtonLocator = By.xpath(("//button[text()='Далее']"));
     //Локатор выбора станции
-
     private final String stationMenuItemLocator = "//div[text()='%s']";
+    //Локатор окна с подветжденным заказом
+
 
     public OrderPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -62,6 +65,5 @@ public class OrderPage {
                 .findElement(nextButtonLocator);
         nextButton.click();
     }
-
 
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.junit.After;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import static org.junit.Assert.assertTrue;
 
 
 @RunWith(Parameterized.class)
@@ -16,6 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class OrderTest {
 
     private WebDriver webDriver;
+    private final String urlStartPage = "https://qa-scooter.praktikum-services.ru/";
 
     private String name;
     private String lastname;
@@ -40,9 +42,10 @@ public class OrderTest {
     }
 
     @Before
-    public void setup() {
-        webDriver = WebDriverFactory.getWebDriver( System.getProperty("browser", "chrome"));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
+
+        public void setup() {
+       webDriver = WebDriverFactory.getWebDriver( System.getProperty("browser", "firefox"));
+        webDriver.get(urlStartPage);
     }
 
     @Test
@@ -66,7 +69,7 @@ public class OrderTest {
         aboutRent.selectRentPeriodMenuItem();
         aboutRent.buttonSelectRent();
         aboutRent.buttonSelectConfirmation();
-
+        aboutRent.orderCompleteIsDisplayed();
 
     }
 
@@ -84,11 +87,12 @@ public class OrderTest {
 
 
         AboutRent aboutRent = new AboutRent(webDriver);
-        aboutRent.selectTimeToDelivery("21.01.2024");
-        aboutRent.selectRentPeriodArend();
-        aboutRent.selectRentPeriodMenuItem();
-        aboutRent.buttonSelectRent();
-        aboutRent.buttonSelectConfirmation();
+        aboutRent.selectTimeToDelivery("21.01.2024"); // выбор даты в поле "Когда привезти самокат"
+        aboutRent.selectRentPeriodArend(); // нажатие на поле с выбором "Скрока аренды"
+        aboutRent.selectRentPeriodMenuItem(); // выбор срока аренды из представенного списка
+        aboutRent.buttonSelectRent(); // нажатие на кнопку "Заказать"
+        aboutRent.buttonSelectConfirmation(); // нажатие на кнопку "Да" в окне подтверждения заказа
+        aboutRent.orderCompleteIsDisplayed(); //Проверка появления всплывающего окна с подтвержденным заказом
 
     }
 

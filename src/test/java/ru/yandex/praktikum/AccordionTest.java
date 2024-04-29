@@ -17,6 +17,7 @@ public class AccordionTest {
 
 
     private WebDriver webDriver;
+    private final String urlStartPage = "https://qa-scooter.praktikum-services.ru/";
     private int index;
     private String answer;
 
@@ -42,7 +43,7 @@ public class AccordionTest {
     @Before
     public void setup() {
         webDriver = WebDriverFactory.getWebDriver( System.getProperty("browser", "chrome"));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
+        webDriver.get(urlStartPage);
     }
 
     @Test
